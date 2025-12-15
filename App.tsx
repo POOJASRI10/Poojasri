@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { MessageSquare, FileText, Brain, GraduationCap } from 'lucide-react';
+import { MessageSquare, FileText, Brain, GraduationCap, Layers } from 'lucide-react';
 import FileUploader from './components/FileUploader';
 import ChatArea from './components/ChatArea';
 import SummaryArea from './components/SummaryArea';
 import QuizArea from './components/QuizArea';
+import FlashcardArea from './components/FlashcardArea';
 import { AppTab, CourseDocument } from './types';
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
         return <SummaryArea documents={documents} />;
       case AppTab.QUIZ:
         return <QuizArea documents={documents} />;
+      case AppTab.FLASHCARDS:
+        return <FlashcardArea documents={documents} />;
       default:
         return <ChatArea documents={documents} />;
     }
@@ -76,6 +79,17 @@ function App() {
             >
               <Brain className="w-4 h-4" />
               Quiz
+            </button>
+            <button
+              onClick={() => setActiveTab(AppTab.FLASHCARDS)}
+              className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                activeTab === AppTab.FLASHCARDS
+                  ? 'bg-white text-brand-primary shadow-sm ring-1 ring-brand-gold/20' 
+                  : 'text-brand-dark/60 hover:text-brand-primary hover:bg-white/50'
+              }`}
+            >
+              <Layers className="w-4 h-4" />
+              Flashcards
             </button>
           </div>
           

@@ -25,8 +25,14 @@ export interface QuizResult {
   answers: number[]; // User selected indices
 }
 
+export interface Flashcard {
+  front: string;
+  back: string;
+}
+
 export enum AppTab {
   CHAT = 'CHAT',
   SUMMARY = 'SUMMARY',
-  QUIZ = 'QUIZ'
+  QUIZ = 'QUIZ',
+  FLASHCARDS = 'FLASHCARDS'
 }

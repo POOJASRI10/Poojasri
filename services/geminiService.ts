@@ -1,5 +1,5 @@
 import { GoogleGenAI, Type, Schema } from "@google/genai";
-import { CourseDocument, ChatMessage, QuizQuestion } from "../types";
+import { CourseDocument, ChatMessage, QuizQuestion, Flashcard } from "../types";
 
 // Initialize Gemini API lazily to ensure environment variables are ready
 // and to prevent app crash on load if key is missing (it will fail on request instead).
@@ -141,6 +141,50 @@ Return the result strictly as a JSON array of objects.`;
     return JSON.parse(text) as QuizQuestion[];
   } catch (error) {
     console.error("Gemini Quiz Error:", error);
+    return [];
+  }
+};
+
+export const generateFlashcards = async (docs: CourseDocument[]): Promise<Flashcard[]> => {
+  try {
+    const ai = getAiClient();
+    const context = getContextFromDocs(docs);
+    if (!context) return [];
+
+    const prompt = `Generate 10 study flashcards based on the provided course materials. 
+    Focus on key definitions, important dates, formulas, or core concepts.
+    'front' should be the term or question. 'back' should be the definition or answer.`;
+
+    const schema: Schema = {
+      type: Type.ARRAY,
+      items: {
+        type: Type.OBJECT,
+        properties: {
+          front: { type: Type.STRING, description: "The term, question, or concept on the front of the card" },
+          back: { type: Type.STRING, description: "The definition, answer, or explanation on the back of the card" }
+        },
+        required: ["front", "back"]
+      }
+    };
+
+    const response = await ai.models.generateContent({
+      model: MODEL_FAST,
+      contents: [
+        { text: prompt },
+        { text: `CONTEXT:\n${context}` }
+      ],
+      config: {
+        responseMimeType: "application/json",
+        responseSchema: schema,
+      }
+    });
+
+    const text = response.text;
+    if (!text) return [];
+    
+    return JSON.parse(text) as Flashcard[];
+  } catch (error) {
+    console.error("Gemini Flashcard Error:", error);
     return [];
   }
 };
