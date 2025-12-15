@@ -3,8 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Smart Campus Assistant</title>
+    <title>StudyMate AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                dark: '#401010',   // Black bean (Text, Dark Bgs)
+                primary: '#800000', // Maroon (Primary Buttons, Active States)
+                light: '#FF8080',   // Light red (Accents, Soft Highlights)
+                cream: '#FDF4D3',   // Cornsilk (Main Backgrounds)
+                gold: '#BFAC6A',    // Ecru (Secondary Accents, Borders)
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
       body {
@@ -16,14 +36,14 @@
         height: 8px;
       }
       ::-webkit-scrollbar-track {
-        background: #f1f1f1; 
+        background: #FDF4D3; 
       }
       ::-webkit-scrollbar-thumb {
-        background: #cbd5e1; 
+        background: #BFAC6A; 
         border-radius: 4px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #94a3b8; 
+        background: #800000; 
       }
     </style>
   <script type="importmap">
@@ -43,7 +63,7 @@
 }
 </script>
 </head>
-  <body class="bg-gray-50 text-gray-900 antialiased">
+  <body class="bg-brand-cream text-brand-dark antialiased">
     <div id="root"></div>
   </body>
 </html>

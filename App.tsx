@@ -24,7 +24,7 @@ function App() {
   };
 
   return (
-    <div className="flex h-screen bg-gray-100 overflow-hidden font-sans">
+    <div className="flex h-screen bg-brand-cream overflow-hidden font-sans text-brand-dark">
       {/* Left Sidebar - File Manager */}
       <FileUploader documents={documents} setDocuments={setDocuments} />
 
@@ -32,24 +32,24 @@ function App() {
       <div className="flex-1 flex flex-col min-w-0">
         
         {/* Top Navigation Bar */}
-        <div className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6 shadow-sm z-20">
+        <div className="h-16 bg-white border-b border-brand-gold/30 flex items-center justify-between px-6 shadow-sm z-20">
           <div className="flex items-center gap-3">
-             <div className="bg-indigo-600 p-2 rounded-lg">
+             <div className="bg-brand-primary p-2 rounded-lg shadow-sm">
                 <GraduationCap className="w-6 h-6 text-white" />
              </div>
              <div>
-               <h1 className="text-lg font-bold text-gray-900 tracking-tight">Smart Campus</h1>
-               <p className="text-xs text-gray-500">AI Learning Assistant</p>
+               <h1 className="text-lg font-bold text-brand-dark tracking-tight">StudyMate AI</h1>
+               <p className="text-xs text-brand-gold font-medium">AI Learning Assistant</p>
              </div>
           </div>
           
-          <div className="flex p-1 bg-gray-100 rounded-lg">
+          <div className="flex p-1 bg-brand-cream rounded-lg border border-brand-gold/20">
             <button
               onClick={() => setActiveTab(AppTab.CHAT)}
               className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${
                 activeTab === AppTab.CHAT 
-                  ? 'bg-white text-indigo-600 shadow-sm' 
-                  : 'text-gray-500 hover:text-gray-700'
+                  ? 'bg-white text-brand-primary shadow-sm ring-1 ring-brand-gold/20' 
+                  : 'text-brand-dark/60 hover:text-brand-primary hover:bg-white/50'
               }`}
             >
               <MessageSquare className="w-4 h-4" />
@@ -59,8 +59,8 @@ function App() {
               onClick={() => setActiveTab(AppTab.SUMMARY)}
               className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${
                 activeTab === AppTab.SUMMARY
-                  ? 'bg-white text-indigo-600 shadow-sm' 
-                  : 'text-gray-500 hover:text-gray-700'
+                  ? 'bg-white text-brand-primary shadow-sm ring-1 ring-brand-gold/20' 
+                  : 'text-brand-dark/60 hover:text-brand-primary hover:bg-white/50'
               }`}
             >
               <FileText className="w-4 h-4" />
@@ -70,8 +70,8 @@ function App() {
               onClick={() => setActiveTab(AppTab.QUIZ)}
               className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${
                 activeTab === AppTab.QUIZ
-                  ? 'bg-white text-indigo-600 shadow-sm' 
-                  : 'text-gray-500 hover:text-gray-700'
+                  ? 'bg-white text-brand-primary shadow-sm ring-1 ring-brand-gold/20' 
+                  : 'text-brand-dark/60 hover:text-brand-primary hover:bg-white/50'
               }`}
             >
               <Brain className="w-4 h-4" />
@@ -83,7 +83,7 @@ function App() {
         </div>
 
         {/* Content View */}
-        <div className="flex-1 overflow-hidden relative">
+        <div className="flex-1 overflow-hidden relative bg-brand-cream">
            {renderContent()}
         </div>
       </div>

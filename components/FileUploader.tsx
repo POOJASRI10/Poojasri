@@ -73,17 +73,14 @@ const FileUploader: React.FC<FileUploaderProps> = ({ documents, setDocuments }) 
         } else if (fileType.endsWith('.txt') || fileType.endsWith('.md') || fileType.endsWith('.json') || fileType.endsWith('.csv')) {
           text = await file.text();
         } else {
-          // Try basic text fallback for other text types
+          // Try basic text fallback
           try {
             text = await file.text();
-            // Basic binary check: look for null bytes
             if (text.includes('\0')) {
                console.warn(`File ${file.name} appears to be binary and is not a supported format.`);
-               alert(`Skipped ${file.name}: Binary file format not supported. Please upload PDF, DOCX, or Text.`);
                continue; 
             }
           } catch (readErr) {
-             console.warn("Could not read file as text", readErr);
              continue;
           }
         }
@@ -114,13 +111,13 @@ const FileUploader: React.FC<FileUploaderProps> = ({ documents, setDocuments }) 
   };
 
   return (
-    <div className="flex flex-col h-full bg-white border-r border-gray-200 w-80 flex-shrink-0">
-      <div className="p-6 border-b border-gray-200">
-        <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
-          <FileText className="w-5 h-5 text-indigo-600" />
+    <div className="flex flex-col h-full bg-white border-r border-brand-gold/30 w-80 flex-shrink-0">
+      <div className="p-6 border-b border-brand-gold/20">
+        <h2 className="text-xl font-bold text-brand-dark flex items-center gap-2">
+          <FileText className="w-5 h-5 text-brand-primary" />
           Materials
         </h2>
-        <p className="text-sm text-gray-500 mt-1">
+        <p className="text-sm text-brand-gold mt-1">
           Upload PDF, DOCX, or text files.
         </p>
       </div>
@@ -128,19 +125,19 @@ const FileUploader: React.FC<FileUploaderProps> = ({ documents, setDocuments }) 
       <div className="p-4 flex-1 overflow-y-auto">
         <label className={`flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer transition-colors ${
           processing 
-            ? 'bg-gray-50 border-gray-300 cursor-not-allowed' 
-            : 'border-indigo-100 bg-indigo-50/50 hover:bg-indigo-50'
+            ? 'bg-brand-cream/50 border-brand-gold cursor-not-allowed' 
+            : 'border-brand-primary/20 bg-brand-cream/30 hover:bg-brand-cream hover:border-brand-primary/50'
         }`}>
           {processing ? (
             <div className="flex flex-col items-center justify-center pt-5 pb-6">
-              <Loader2 className="w-8 h-8 mb-2 text-indigo-500 animate-spin" />
-              <p className="text-sm text-gray-600 font-medium">Processing...</p>
+              <Loader2 className="w-8 h-8 mb-2 text-brand-primary animate-spin" />
+              <p className="text-sm text-brand-dark font-medium">Processing...</p>
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center pt-5 pb-6">
-              <Upload className="w-8 h-8 mb-2 text-indigo-500" />
-              <p className="text-sm text-gray-600 font-medium">Click to upload</p>
-              <p className="text-xs text-gray-400 mt-1">.pdf, .docx, .txt, .md</p>
+              <Upload className="w-8 h-8 mb-2 text-brand-primary" />
+              <p className="text-sm text-brand-dark font-medium">Click to upload</p>
+              <p className="text-xs text-brand-gold mt-1 font-medium">.pdf, .docx, .txt</p>
             </div>
           )}
           <input 
@@ -166,10 +163,10 @@ const FileUploader: React.FC<FileUploaderProps> = ({ documents, setDocuments }) 
             const isWord = doc.name.toLowerCase().endsWith('.docx');
             
             return (
-              <div key={doc.id} className="group relative flex items-center p-3 bg-gray-50 rounded-lg border border-gray-100 hover:border-indigo-200 transition-all">
-                <div className="h-10 w-10 bg-white rounded-md flex items-center justify-center border border-gray-200 text-gray-400">
+              <div key={doc.id} className="group relative flex items-center p-3 bg-brand-cream/30 rounded-lg border border-brand-gold/20 hover:border-brand-light transition-all">
+                <div className="h-10 w-10 bg-white rounded-md flex items-center justify-center border border-brand-gold/30 text-brand-gold">
                   {isPdf ? (
-                    <FileType className="w-5 h-5 text-red-500" />
+                    <FileType className="w-5 h-5 text-brand-primary" />
                   ) : isWord ? (
                     <FileType className="w-5 h-5 text-blue-500" />
                   ) : (
@@ -177,7 +174,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({ documents, setDocuments }) 
                   )}
                 </div>
                 <div className="ml-3 flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-900 truncate" title={doc.name}>
+                  <p className="text-sm font-medium text-brand-dark truncate" title={doc.name}>
                     {doc.name}
                   </p>
                   <p className="text-xs text-gray-500">
@@ -186,7 +183,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({ documents, setDocuments }) 
                 </div>
                 <button 
                   onClick={() => removeDocument(doc.id)}
-                  className="opacity-0 group-hover:opacity-100 absolute -top-2 -right-2 bg-red-100 text-red-600 p-1 rounded-full hover:bg-red-200 transition-all"
+                  className="opacity-0 group-hover:opacity-100 absolute -top-2 -right-2 bg-brand-light/20 text-brand-primary p-1 rounded-full hover:bg-brand-light/40 transition-all border border-brand-light/20"
                 >
                   <X className="w-3 h-3" />
                 </button>
@@ -197,10 +194,10 @@ const FileUploader: React.FC<FileUploaderProps> = ({ documents, setDocuments }) 
       </div>
       
       {documents.length > 0 && (
-        <div className="p-4 bg-gray-50 border-t border-gray-200 text-xs text-gray-500 flex items-start gap-2">
-          <AlertCircle className="w-4 h-4 text-indigo-500 flex-shrink-0" />
+        <div className="p-4 bg-brand-cream border-t border-brand-gold/20 text-xs text-brand-dark/70 flex items-start gap-2">
+          <AlertCircle className="w-4 h-4 text-brand-primary flex-shrink-0" />
           <p>
-            Gemini is processing {documents.length} file(s). Ask questions, summarize, or take a quiz!
+            StudyMate is ready. Ask questions, summarize, or take a quiz!
           </p>
         </div>
       )}

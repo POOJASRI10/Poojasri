@@ -13,7 +13,7 @@ const ChatArea: React.FC<ChatAreaProps> = ({ documents }) => {
     {
       id: 'welcome',
       role: 'model',
-      text: 'Hello! I am your Smart Campus Assistant. Upload your course materials on the left, and then ask me anything about them!',
+      text: 'Hello! I am StudyMate AI. Upload your course materials on the left, and then ask me anything about them!',
       timestamp: Date.now()
     }
   ]);
@@ -64,7 +64,7 @@ const ChatArea: React.FC<ChatAreaProps> = ({ documents }) => {
   };
 
   return (
-    <div className="flex flex-col h-full bg-white relative">
+    <div className="flex flex-col h-full bg-brand-cream/30 relative">
       {/* Messages Area */}
       <div className="flex-1 overflow-y-auto p-6 space-y-6">
         {messages.map((msg) => (
@@ -72,20 +72,20 @@ const ChatArea: React.FC<ChatAreaProps> = ({ documents }) => {
             key={msg.id} 
             className={`flex items-start gap-4 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}
           >
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${
+            <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm ${
               msg.role === 'user' 
-                ? 'bg-indigo-600 text-white' 
-                : 'bg-emerald-600 text-white'
+                ? 'bg-brand-primary text-white' 
+                : 'bg-brand-gold text-white'
             }`}>
               {msg.role === 'user' ? <User className="w-6 h-6" /> : <Bot className="w-6 h-6" />}
             </div>
             
-            <div className={`max-w-[80%] rounded-2xl p-4 shadow-sm ${
+            <div className={`max-w-[80%] rounded-2xl p-4 shadow-sm border ${
               msg.role === 'user' 
-                ? 'bg-indigo-50 text-gray-800 rounded-tr-none' 
-                : 'bg-white border border-gray-100 text-gray-800 rounded-tl-none'
+                ? 'bg-white border-brand-primary/10 text-brand-dark rounded-tr-none' 
+                : 'bg-white border-brand-gold/30 text-brand-dark rounded-tl-none'
             }`}>
-              <div className="prose prose-sm prose-indigo max-w-none">
+              <div className="prose prose-sm prose-red max-w-none">
                 <ReactMarkdown>{msg.text}</ReactMarkdown>
               </div>
             </div>
@@ -94,12 +94,12 @@ const ChatArea: React.FC<ChatAreaProps> = ({ documents }) => {
         
         {loading && (
           <div className="flex items-start gap-4">
-             <div className="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center flex-shrink-0">
+             <div className="w-10 h-10 rounded-full bg-brand-gold text-white flex items-center justify-center flex-shrink-0">
                <Bot className="w-6 h-6" />
              </div>
-             <div className="bg-gray-50 rounded-2xl rounded-tl-none p-4 border border-gray-100 flex items-center gap-2">
-               <Loader2 className="w-4 h-4 animate-spin text-gray-500" />
-               <span className="text-sm text-gray-500">Thinking...</span>
+             <div className="bg-white rounded-2xl rounded-tl-none p-4 border border-brand-gold/30 flex items-center gap-2 shadow-sm">
+               <Loader2 className="w-4 h-4 animate-spin text-brand-gold" />
+               <span className="text-sm text-brand-dark/70">Thinking...</span>
              </div>
           </div>
         )}
@@ -107,27 +107,27 @@ const ChatArea: React.FC<ChatAreaProps> = ({ documents }) => {
       </div>
 
       {/* Input Area */}
-      <div className="p-4 bg-white border-t border-gray-200">
+      <div className="p-4 bg-white border-t border-brand-gold/30">
         <div className="max-w-4xl mx-auto relative flex items-center">
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder={documents.length > 0 ? "Ask a question about your materials..." : "Upload documents to start asking questions..."}
-            className="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-indigo-500 focus:border-indigo-500 block p-4 pr-12 shadow-sm resize-none"
+            className="w-full bg-brand-cream/30 border border-brand-gold/40 text-brand-dark text-sm rounded-xl focus:ring-brand-primary focus:border-brand-primary block p-4 pr-12 shadow-inner resize-none placeholder-brand-gold"
             rows={1}
             disabled={loading}
           />
           <button
             onClick={handleSend}
             disabled={!input.trim() || loading}
-            className="absolute right-2 p-2 text-indigo-600 rounded-lg hover:bg-indigo-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="absolute right-2 p-2 text-brand-primary rounded-lg hover:bg-brand-cream disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             <Send className="w-5 h-5" />
           </button>
         </div>
         <div className="text-center mt-2">
-          <p className="text-xs text-gray-400">Gemini can make mistakes. Verify important information.</p>
+          <p className="text-xs text-brand-gold">StudyMate AI can make mistakes. Check important info.</p>
         </div>
       </div>
     </div>

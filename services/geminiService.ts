@@ -36,7 +36,7 @@ export const generateChatResponse = async (
     const ai = getAiClient();
     const context = getContextFromDocs(docs);
     
-    const systemInstruction = `You are the "Smart Campus Assistant", an intelligent study companion for college students.
+    const systemInstruction = `You are "StudyMate AI", an intelligent study companion for college students.
 Your goal is to help students learn from their uploaded course materials.
 
 RULES:
