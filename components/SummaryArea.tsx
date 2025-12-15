@@ -22,7 +22,7 @@ const SummaryArea: React.FC<SummaryAreaProps> = ({ documents }) => {
 
   if (documents.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center h-full bg-brand-cream/30 text-brand-dark/60 p-8 text-center">
+      <div className="flex flex-col items-center justify-center h-full bg-white text-brand-dark/60 p-8 text-center">
         <FileText className="w-16 h-16 text-brand-gold/50 mb-4" />
         <h3 className="text-xl font-semibold text-brand-dark">No Content to Summarize</h3>
         <p className="mt-2 max-w-md text-brand-gold">Upload course materials in the sidebar to generate comprehensive summaries and study notes.</p>
@@ -31,7 +31,7 @@ const SummaryArea: React.FC<SummaryAreaProps> = ({ documents }) => {
   }
 
   return (
-    <div className="flex flex-col h-full bg-brand-cream/30">
+    <div className="flex flex-col h-full bg-white">
       <div className="p-6 border-b border-brand-gold/20 flex justify-between items-center bg-white/50 backdrop-blur-sm">
         <div>
           <h2 className="text-2xl font-bold text-brand-dark flex items-center gap-2">
@@ -62,7 +62,7 @@ const SummaryArea: React.FC<SummaryAreaProps> = ({ documents }) => {
         </button>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-8 bg-brand-cream">
+      <div className="flex-1 overflow-y-auto p-8 bg-white">
         {summary ? (
           <div className="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-sm border border-brand-gold/20">
             <div className="prose prose-lg prose-red max-w-none text-brand-dark">

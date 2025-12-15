@@ -66,7 +66,7 @@ function App() {
           <div className="flex items-center gap-4">
             <button 
               onClick={handleBackToDashboard}
-              className="p-2 hover:bg-brand-cream rounded-full text-brand-dark transition-colors flex items-center gap-2 group"
+              className="p-2 hover:bg-gray-100 rounded-full text-brand-dark transition-colors flex items-center gap-2 group"
             >
               <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
               <span className="font-medium">Back</span>
@@ -82,7 +82,7 @@ function App() {
         </div>
 
         {/* Tool Content */}
-        <div className="flex-1 overflow-hidden relative bg-brand-cream">
+        <div className="flex-1 overflow-hidden relative bg-white">
            {renderTool()}
         </div>
       </div>
@@ -90,7 +90,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-brand-cream font-sans text-brand-dark">
+    <div className="min-h-screen bg-white font-sans text-brand-dark">
       {viewState === ViewState.DASHBOARD ? (
         <div className="min-h-screen overflow-y-auto">
            {/* Simple Header for Dashboard */}

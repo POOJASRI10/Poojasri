@@ -44,7 +44,7 @@ const FlashcardArea: React.FC<FlashcardAreaProps> = ({ documents }) => {
 
   if (documents.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center h-full bg-brand-cream/30 text-brand-dark/60 p-8 text-center">
+      <div className="flex flex-col items-center justify-center h-full bg-white text-brand-dark/60 p-8 text-center">
         <Layers className="w-16 h-16 text-brand-gold/50 mb-4" />
         <h3 className="text-xl font-semibold text-brand-dark">No Content for Flashcards</h3>
         <p className="mt-2 max-w-md text-brand-gold">Upload course materials to generate flashcards.</p>
@@ -53,7 +53,7 @@ const FlashcardArea: React.FC<FlashcardAreaProps> = ({ documents }) => {
   }
 
   return (
-    <div className="flex flex-col h-full bg-brand-cream/30">
+    <div className="flex flex-col h-full bg-white">
       <div className="p-6 border-b border-brand-gold/20 flex justify-between items-center bg-white/50 backdrop-blur-sm z-10">
         <div>
           <h2 className="text-2xl font-bold text-brand-dark flex items-center gap-2">
@@ -84,7 +84,7 @@ const FlashcardArea: React.FC<FlashcardAreaProps> = ({ documents }) => {
         </button>
       </div>
 
-      <div className="flex-1 overflow-hidden p-8 bg-brand-cream flex flex-col items-center justify-center relative">
+      <div className="flex-1 overflow-hidden p-8 bg-white flex flex-col items-center justify-center relative">
         
         {loading && (
            <div className="flex flex-col items-center justify-center text-brand-gold">

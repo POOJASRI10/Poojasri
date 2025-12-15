@@ -64,7 +64,7 @@ const ChatArea: React.FC<ChatAreaProps> = ({ documents }) => {
   };
 
   return (
-    <div className="flex flex-col h-full bg-brand-cream/30 relative">
+    <div className="flex flex-col h-full bg-white relative">
       {/* Messages Area */}
       <div className="flex-1 overflow-y-auto p-6 space-y-6">
         {messages.map((msg) => (
@@ -114,7 +114,7 @@ const ChatArea: React.FC<ChatAreaProps> = ({ documents }) => {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder={documents.length > 0 ? "Ask a question about your materials..." : "Upload documents to start asking questions..."}
-            className="w-full bg-brand-cream/30 border border-brand-gold/40 text-brand-dark text-sm rounded-xl focus:ring-brand-primary focus:border-brand-primary block p-4 pr-12 shadow-inner resize-none placeholder-brand-gold"
+            className="w-full bg-gray-50 border border-brand-gold/40 text-brand-dark text-sm rounded-xl focus:ring-brand-primary focus:border-brand-primary block p-4 pr-12 shadow-inner resize-none placeholder-brand-gold"
             rows={1}
             disabled={loading}
           />

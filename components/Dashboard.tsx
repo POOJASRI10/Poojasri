@@ -136,7 +136,7 @@ const Dashboard: React.FC<DashboardProps> = ({ documents, setDocuments, onNaviga
         className={`relative border-2 border-dashed rounded-2xl p-12 text-center transition-all duration-200 ease-in-out ${
           dragActive 
             ? 'border-brand-primary bg-brand-primary/5' 
-            : 'border-brand-primary/30 bg-brand-cream/30 hover:bg-brand-cream/50'
+            : 'border-brand-primary/30 bg-gray-50 hover:bg-gray-100'
         }`}
         onDragEnter={onDragEnter}
         onDragLeave={onDragLeave}
@@ -176,7 +176,7 @@ const Dashboard: React.FC<DashboardProps> = ({ documents, setDocuments, onNaviga
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {documents.map(doc => (
-              <div key={doc.id} className="flex items-center justify-between p-3 bg-brand-cream/30 rounded-lg border border-brand-gold/10 group">
+              <div key={doc.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-brand-gold/10 group">
                 <div className="flex items-center gap-3 overflow-hidden">
                   <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center border border-brand-gold/20 flex-shrink-0">
                      <FileIcon className="w-5 h-5 text-brand-primary/70" />
